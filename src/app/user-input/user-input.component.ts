@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { type DataModel } from '../data.model';
 
@@ -10,19 +10,19 @@ import { type DataModel } from '../data.model';
   styleUrl: './user-input.component.css'
 })
 export class UserInputComponent {
-  @Output() calculate = new EventEmitter<DataModel>();
+  calculate = output<DataModel>();
 
-  enteredInitialInvestment = '0'
-  enteredAnnualInvestment = '0'
-  enteredExpectedReturn = '5'
-  enteredDuration = '10'
+  enteredInitialInvestment = signal('0');
+  enteredAnnualInvestment = signal('0');
+  enteredExpectedReturn = signal('5');
+  enteredDuration = signal('10');
 
   onSubmit() {
     this.calculate.emit({
-      initialInvestment: +this.enteredInitialInvestment,
-      duration: +this.enteredDuration,
-      expectedReturn: +this.enteredExpectedReturn,
-      annualInvestment: +this.enteredAnnualInvestment
+      initialInvestment: +this.enteredInitialInvestment(),
+      duration: +this.enteredDuration(),
+      expectedReturn: +this.enteredExpectedReturn(),
+      annualInvestment: +this.enteredAnnualInvestment()
     })
   }
 }

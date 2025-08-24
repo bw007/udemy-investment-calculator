@@ -1,24 +1,24 @@
 @if (!results()) {
-<p class="center">Please enter some values and press "Calculate"</p>
+<p class="center">Iltimos, qiymatlarni kiriting va "Hisoblash" tugmasini bosing</p>
 } @else {
 <table>
   <thead>
     <tr>
-      <th>Year</th>
-      <th>Investment Value</th>
-      <th>Interest (Year)</th>
-      <th>Total Interest</th>
-      <th>Invested Capital</th>
+      <th>Yil</th>
+      <th>Investitsiya qiymati</th>
+      <th>Foiz (yiliga)</th>
+      <th>Jami foiz</th>
+      <th>Kiritilgan kapital</th>
     </tr>
   </thead>
   <tbody>
     @for (result of results(); track result.year) {
       <tr>
         <td>{{ result.year }}</td>
-        <td>{{ result.valueEndOfYear | currency }}</td>
-        <td>{{ result.interest | currency }}</td>
-        <td>{{ result.totalInterest | currency }}</td>
-        <td>{{ result.totalAmountInvested | currency }}</td>
+        <td>{{ result.valueEndOfYear | currency: 'UZS' }}</td>
+        <td>{{ result.interest | currency: 'UZS' }}</td>
+        <td>{{ result.totalInterest | currency: 'UZS' }}</td>
+        <td>{{ result.totalAmountInvested | currency: 'UZS' }}</td>
       </tr>
     }
   </tbody>
